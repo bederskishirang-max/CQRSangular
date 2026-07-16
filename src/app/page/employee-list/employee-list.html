@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
 
     <div class="d-flex justify-content-between mb-3">
 
@@ -84,4 +84,135 @@
 
     </table>
 
+</div> -->
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between mb-3">
+        <h2>Employees</h2>
+        <div>
+            <button
+                class="btn btn-success me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#addEmployeeModal">
+                Add Employee
+            </button>
+            <button
+                class="btn btn-danger"
+                (click)="logout()">
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th width="220">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employees()">
+                <td>{{emp.name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.phone}}</td>
+                <td>
+                    <!-- <button
+                        class="btn btn-warning btn-sm me-2"
+                        [routerLink]="['/editEmployee', emp.id!]">
+                        Edit
+                    </button> -->
+                       <!-- <button
+                            class="btn btn-success me-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#addEmployeeModal">
+                            Add Employee
+                        </button> -->
+                        <button
+                            class="btn btn-warning btn-sm me-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editEmployeeModal"
+                            (click)="openEditModal(emp)">
+                            Edit
+                        </button>
+                    <button
+                        class="btn btn-danger btn-sm"
+                        (click)="deleteEmployee(emp.id!)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Bootstrap Modal Markup -->
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addEmployeeModalLabel">Add New Employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input class="form-control" [(ngModel)]="employee.name" placeholder="Enter name">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="email" [(ngModel)]="employee.email" placeholder="Enter email">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <input class="form-control" [(ngModel)]="employee.phone" placeholder="Enter phone number">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Cancel</button>
+                <!-- Added data-bs-dismiss="modal" here so it closes automatically after clicking save -->
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="save()">Save Employee</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 2. ADDED: Edit Employee Modal -->
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editEmployeeModalLabel">Edit Employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Binds directly to the selectedEmployee object -->
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input class="form-control" [(ngModel)]="selectedEmployee.name" placeholder="Enter name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="email" [(ngModel)]="selectedEmployee.email" placeholder="Enter email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <input class="form-control" [(ngModel)]="selectedEmployee.phone" placeholder="Enter phone number">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="update()">Update Employee</button>
+            </div>
+        </div>
+    </div>
 </div>
