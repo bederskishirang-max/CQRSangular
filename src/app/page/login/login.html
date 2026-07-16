@@ -1,0 +1,73 @@
+<div class="container mt-5">
+
+<div class="row justify-content-center">
+
+<div class="col-md-5">
+
+<div class="card shadow">
+
+<div class="card-header text-center">
+
+<h3>Login</h3>
+
+</div>
+
+<div class="card-body">
+
+<div class="mb-3">
+
+<label>Username</label>
+
+<input
+
+class="form-control"
+
+[(ngModel)]="loginRequest.username">
+
+</div>
+
+<div class="mb-3">
+
+<label>Password</label>
+
+<input
+
+type="password"
+
+class="form-control"
+
+[(ngModel)]="loginRequest.password">
+
+</div>
+
+<button
+
+class="btn btn-primary w-100"
+
+(click)="login()">
+
+Login
+
+</button>
+
+<hr>
+
+<button
+
+routerLink="/register"
+
+class="btn btn-success w-100">
+
+Register
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>

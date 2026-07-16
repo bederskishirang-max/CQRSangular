@@ -1,0 +1,103 @@
+<!-- <div class="container mt-5">
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <h3>Edit Employee</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="mb-3">
+
+                <label>Name</label>
+
+                <input
+                    class="form-control"
+                    [(ngModel)]="employee().name">
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Email</label>
+
+                <input
+                    class="form-control"
+                    [(ngModel)]="employee().email">
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Phone</label>
+
+                <input
+                    class="form-control"
+                    [(ngModel)]="employee().phone">
+
+            </div>
+
+            <button
+                class="btn btn-primary"
+                (click)="update()">
+
+                Update
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div> -->
+
+
+
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Edit Employee</h3>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <!-- Bind two-way directly to the evaluated signal's properties -->
+                <input
+                    class="form-control"
+                    [(ngModel)]="employee().name">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    [(ngModel)]="employee().email">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input
+                    class="form-control"
+                    [(ngModel)]="employee().phone">
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <button 
+                    class="btn btn-secondary" 
+                    routerLink="/employees">
+                    Cancel
+                </button>
+                <button
+                    class="btn btn-primary"
+                    (click)="update()">
+                    Update Employee
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

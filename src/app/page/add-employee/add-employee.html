@@ -1,0 +1,55 @@
+<div class="container mt-5">
+
+<div class="card">
+
+<div class="card-header">
+
+<h3>Add Employee</h3>
+
+</div>
+
+<div class="card-body">
+
+<div class="mb-3">
+
+<label>Name</label>
+
+<input
+class="form-control"
+[(ngModel)]="employee.name">
+
+</div>
+
+<div class="mb-3">
+
+<label>Email</label>
+
+<input
+class="form-control"
+[(ngModel)]="employee.email">
+
+</div>
+
+<div class="mb-3">
+
+<label>Phone</label>
+
+<input
+class="form-control"
+[(ngModel)]="employee.phone">
+
+</div>
+
+<button
+class="btn btn-primary"
+(click)="save()">
+
+Save
+
+</button>
+
+</div>
+
+</div>
+
+</div>
