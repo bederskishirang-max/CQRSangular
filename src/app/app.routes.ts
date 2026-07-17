@@ -10,6 +10,8 @@ import { AddEmployeeComponent } from './page/add-employee/add-employee';
 
 import { EditEmployeeComponent } from './page/edit-employee/edit-employee';
 
+import { UserList } from './page/user-list/user-list';
+
 import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
@@ -45,6 +47,16 @@ component:RegisterComponent
  path:'employees',
 
  component:EmployeeListComponent,
+
+ canActivate:[authGuard]
+
+ },
+
+  {
+
+ path:'userlist',
+
+ component:UserList,
 
  canActivate:[authGuard]
 
