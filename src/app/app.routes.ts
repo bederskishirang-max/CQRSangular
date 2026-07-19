@@ -10,7 +10,7 @@ import { AddEmployeeComponent } from './page/add-employee/add-employee';
 
 import { EditEmployeeComponent } from './page/edit-employee/edit-employee';
 
-import { UserList } from './page/user-list/user-list';
+import { UserListComponent } from './page/user-list/user-list';
 
 import { authGuard } from './guards/auth-guard';
 
@@ -56,7 +56,7 @@ component:RegisterComponent
 
  path:'userlist',
 
- component:UserList,
+ component:UserListComponent,
 
  canActivate:[authGuard]
 
@@ -91,3 +91,4 @@ redirectTo:'login'
 }
 
 ];
+

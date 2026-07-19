@@ -10,4 +10,4 @@ import { RouterModule } from '@angular/router';
   templateUrl: './user-list.html',
   styleUrl: './user-list.css',
 })
-export class UserList {}
+export class UserListComponent {}

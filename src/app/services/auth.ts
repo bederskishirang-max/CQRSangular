@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { environment } from '../../environments/environment';
 import { Login } from '../models/login';
 import { Register } from '../models/register';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +15,9 @@ import { Register } from '../models/register';
 export class AuthService {
 
   private api = environment.apiUrl + '/Authentication';
+  private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router: Router) {}
 
   login(model: Login): Observable<any> {
     return this.http.post(`${this.api}/Login`, model);
@@ -35,7 +39,20 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
+  // isLoggedIn(): boolean {
+  //   return this.getToken() != null;
+  // }
+
   isLoggedIn(): boolean {
-    return this.getToken() != null;
+    const token = this.getToken();
+    if (!token) return false;
+
+    const expired = this.jwtHelper.isTokenExpired(token);
+    if (expired) {
+      this.logout();
+      this.router.navigate(['/login']);   // force redirect
+      return false;
+    }
+    return true;
   }
 }
